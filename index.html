@@ -1,31 +1,66 @@
 <html>
+
 <head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">  
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k="
+        crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-1.10.1.min.js" integrity="sha256-SDf34fFWX/ZnUozXXEH0AeB+Ip3hvRsjLwp6QNTEb3k=" crossorigin="anonymous"></script>
 
-<script type="text/javascript" charset="utf-8" src="data.js"></script>
 
-<style type="text/css" media="screen">
-  
-#fig {
-  height: 1000px;
-  width: 1200px;
-}
 
-</style>
-<script type="text/javascript" src="celebrationgrid.js" charset="utf-8"></script>
-<script type="text/javascript" charset="utf-8">
-
-</script>
+    <style type="text/css" media="screen">
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="data.js"></script>
+    <script type="text/javascript" src="celebrationgrid.js" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+    </script>
 
 </head>
 
-<body onload="init(h,w);">
-<h1 id="title" style="text-align: center;"></h1>
-<div id="radar"></div>
-<div>
-<p>^ Item in dispute, additional discussion and context to be provided.</p>
-</div>
+<body onload="init();">
+
+    <div id="radar"></div>
+    <div class="container cyan">
+        <h1 id="title" style="text-align: center;"></h1>
+        <div class="row">
+            <div class="col s4">
+                <div class="card-panel grey lighten-2">
+                    Mistakes Success
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card-panel green lighten-2">
+                    Experiments Success
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card-panel green lighten-2">
+                    Practices Success
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4">
+                <div class="card-panel red lighten-2">
+                    Mistakes Failure
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card-panel green lighten-2">
+                    Experiments Failure
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card-panel grey lighten-2">
+                    Practices Failure
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content goes here -->
+    </div>
 </body>
+
 </html>

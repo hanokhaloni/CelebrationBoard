@@ -2,7 +2,7 @@
 
 Based on https://management30.com/product/workouts/celebration-grids/
 
-
+![Reference](celebration-zone-color.png)
 
 Tasks up to now
  - [ ] Finish readme
