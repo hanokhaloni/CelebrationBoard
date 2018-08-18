@@ -112,6 +112,9 @@ class CelebrationGrid {
 
     }
 }
+
+
+
 var celebrationGrid = new CelebrationGrid();
 celebrationGrid.init();
 
