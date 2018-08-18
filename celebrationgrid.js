@@ -66,7 +66,7 @@ class panel {
         panelHtml += `<div class="col s4">`;
         panelHtml += `<div class="card-panel ${color} lighten-2">`;
         panelHtml += `<div>` + cardType.properties[this.type].name + `</div>`;
-        panelHtml += `<div class="scrollable">`
+        panelHtml += `<div class="scrollable scroll">`;
         cards.forEach(function (card)
         {
             panelHtml += card.toHtml();
