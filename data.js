@@ -8,4 +8,4 @@ var celebrationGridData = [{
     content: " Defining time to /'be introduced/' to a project using self-learning/...? ",
     isSpecial: true,
     isActiveActionItem: true
-}]
+}];

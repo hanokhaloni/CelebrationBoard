@@ -20,7 +20,7 @@ var cardType = {
     }
 };
 
-class card {
+class Card {
 
     constructor(sn, type, project, category, content, isSpecial, isActiveActionItem) {
         this.sn=sn;
@@ -55,7 +55,7 @@ class card {
     }
 }
 
-class panel {
+class Panel {
     constructor(type) {
         this.type =  type;
     }
@@ -78,36 +78,42 @@ class panel {
     }
 }
 
-class resultRow {
+class CelebrationGrid {
+    constructor() {
+    }
 
+     init() {
+        let scard1 = new Card(1, cardType.MISTAKES_SUCCESS, "projectA", "category", "content", true, true);
+        let spanel1 = new Panel(cardType.MISTAKES_SUCCESS).toHtml([scard1]);
+
+        let scard2 = new Card(1, cardType.EXPERIMENT_SUCCESS, "projectB", "category", "content", true, false);
+        let spanel2 = new Panel(cardType.EXPERIMENT_SUCCESS).toHtml([scard2, scard2]);
+
+        let scard3 = new Card(1, cardType.PRACTICE_SUCCESS, "projectC", "category", "content", false, true);
+        let spanel3 = new Panel(cardType.PRACTICE_SUCCESS).toHtml([scard3, scard2]);
+
+        let spanel = spanel1 + spanel2 + spanel3;
+
+        let fcard1 = new Card(1, cardType.MISTAKES_FAILURE, "projectC", "category", "content", false, true);
+        let fpanel1 = new Panel(cardType.MISTAKES_FAILURE).toHtml([fcard1]);
+
+        let fcard2 = new Card(1, cardType.EXPERIMENT_FAILURE, "projectB", "category", "content", true, false);
+        let fpanel2 = new Panel(cardType.EXPERIMENT_FAILURE).toHtml([fcard2]);
+
+        let fcard3 = new Card(1, cardType.PRACTICE_FAILURE, "projectA", "category", "content", false, false);
+        let fpanel3 = new Panel(cardType.PRACTICE_FAILURE).toHtml([fcard3]);
+
+        let fpanel = fpanel1 + fpanel2 + fpanel3;
+
+        jQuery(document).ready(() => {
+            $('#success').append(spanel);
+            $('#failure').append(fpanel);
+        });
+
+    }
 }
-
-let scard1 = new card(1,cardType.MISTAKES_SUCCESS, "projectA", "category", "content", true, true);
-let spanel1 = new panel(cardType.MISTAKES_SUCCESS).toHtml([scard1]);
-
-let scard2 = new card(1,cardType.EXPERIMENT_SUCCESS, "projectB", "category", "content", true, false);
-let spanel2 = new panel(cardType.EXPERIMENT_SUCCESS).toHtml([scard2, scard2]);
-
-let scard3 = new card(1,cardType.PRACTICE_SUCCESS, "projectC", "category", "content", false, true);
-let spanel3 = new panel(cardType.PRACTICE_SUCCESS).toHtml([scard3, scard2]);
-
-let spanel = spanel1 + spanel2 + spanel3;
-
-let fcard1 = new card(1,cardType.MISTAKES_FAILURE, "projectC", "category", "content", false, true);
-let fpanel1 = new panel(cardType.MISTAKES_FAILURE).toHtml([fcard1]);
-
-let fcard2 = new card(1,cardType.EXPERIMENT_FAILURE, "projectB", "category", "content", true, false);
-let fpanel2 = new panel(cardType.EXPERIMENT_FAILURE).toHtml([fcard2]);
-
-let fcard3 = new card(1,cardType.PRACTICE_FAILURE, "projectA", "category", "content", false, false);
-let fpanel3 = new panel(cardType.PRACTICE_FAILURE).toHtml([fcard3]);
-
-let fpanel = fpanel1 + fpanel2 + fpanel3;
-
-jQuery(document).ready(() => {
-    $('#success').append(spanel);
-    $('#failure').append(fpanel);});
-
+var celebrationGrid = new CelebrationGrid();
+celebrationGrid.init();
 
 
 

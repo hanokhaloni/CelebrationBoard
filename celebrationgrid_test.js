@@ -5,17 +5,17 @@ describe("Celebration Grid", function () {
     });
 
 
-    describe("Generate a valid card", function () {
-      it("should be a valid card", function () {
-        let card2 = new card(1,cardType.MISTAKES_SUCCESS, "project", "category", "content", true, true);
+    describe("Generate a valid Card", function () {
+      it("should be a valid Card", function () {
+        let card2 = new Card(1,cardType.MISTAKES_SUCCESS, "project", "category", "content", true, true);
         let result = card2.toHtml();
-        let expected = "<div class=\"card grey  lighten-1\">"+
-        "  <div class=\"card-content\">"+
+        let expected = "<div class=\"Card grey  lighten-1\">"+
+        "  <div class=\"Card-content\">"+
         "    <div class=\"left\">project</div>"+
         "    <div class=\"right\">category</div>"+
         "  </div>"+
-        "  <div class=\"card-content\"> content </div>"+
-        "  <div class=\"card-content\">"+
+        "  <div class=\"Card-content\"> content </div>"+
+        "  <div class=\"Card-content\">"+
         "    <div class=\"left\">ACTIONITEM</div>"+
         "    <div class=\"right\">SPECIAL</div>"+
         "  </div>"+
@@ -27,15 +27,15 @@ describe("Celebration Grid", function () {
     });
   })
 });
-// "<div class="card grey  lighten-1">"
-//   <div class="card-content">
+// "<div class="Card grey  lighten-1">"
+//   <div class="Card-content">
 //     <div class="left">project</div>
 //     <div class="right">category</div>
-//   </div>  <div class="card-content"> content </div>
-//   <div class="card-content">
+//   </div>  <div class="Card-content"> content </div>
+//   <div class="Card-content">
 //     <div class="left">ACTIONITEM</div>
 //     <div class="right">SPECIAL</div>
 //   </div>
 // </div>"
-jasmine.getEnv().addReporter(new jasmine.TrivialReporter());;
+jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
 jasmine.getEnv().execute();
