@@ -18,7 +18,6 @@ var cardType = {
        5: {name: "Experiments Failures", color: "green"},
        6: {name: "Practices Failures", color: "grey"},
     }
-    
 };
 
 class card {
@@ -33,49 +32,75 @@ class card {
         this.isActiveActionItem = isActiveActionItem;
     }
    
-     createHtmlFor() {
-        let result = "";
+     toHtml() {
+        let cardHtml = "";
         let color = cardType.properties[this.type].color;
-        result += `<div class=\"card ${color}  lighten-1\">`;
-        result += `  <div class="card-content">`;
-        result += `    <div class="left">${this.project}</div>`;
-        result += `    <div class="right">${this.category}</div>`;
-        result += `  </div>`;
-        result += `  <div class="card-content"> ${this.content} </div>`;
-        result += `  <div class="card-content">`;
+        cardHtml += `<div class="card ${color}  lighten-1">`;
+        cardHtml += `  <div class="card-content">`;
+        cardHtml += `    <div class="left">${this.project}</div>`;
+        cardHtml += `    <div class="right">${this.category}</div>`;
+        cardHtml += `  </div>`;
+        cardHtml += `  <div class="card-content"> ${this.content} </div>`;
+        cardHtml += `  <div class="card-content">`;
         if (this.isActiveActionItem) {
-            result += `    <div class="left">ACTIONITEM</div>`;
+            cardHtml += `    <div class="left">ACTIONITEM</div>`;
         }
         if (this.isSpecial) {
-            result += `    <div class="right">SPECIAL</div>`
+            cardHtml += `    <div class="right">SPECIAL</div>`;
         }
-        result += `  </div>`
-        result += `</div>`
+        cardHtml += `  </div>`;
+        cardHtml += `</div>`;
     
-        return result;
+        return cardHtml;
     }
 }
 
+class panel {
+    constructor(type) {
+        this.type =  type;
+    }
+
+    toHtml(cards) {
+        let panelHtml = "";
+        let color = cardType.properties[this.type].color;
+        panelHtml += `<div class="col s4">`;
+        panelHtml += `<div class="card-panel ${color} lighten-2">`;
+        panelHtml += `<div>` + cardType.properties[this.type].name + `</div>`;
+        panelHtml += `<div class="scrollable">`
+        cards.forEach(function (card)
+        {
+            panelHtml += card.toHtml();
+        });
+        panelHtml += `</div>`;
+        panelHtml += `</div>`;
+        panelHtml += `</div>`;
+        return panelHtml;
+    }
+}
+
+class resultRow {
+
+}
+
 let scard1 = new card(1,cardType.MISTAKES_SUCCESS, "projectA", "category", "content", true, true);
-let spanel1 = `<div class="col s4"><div class="card-panel grey lighten-2">` + scard1.createHtmlFor() + `</div></div>`;
+let spanel1 = new panel(cardType.MISTAKES_SUCCESS).toHtml([scard1]);
 
 let scard2 = new card(1,cardType.EXPERIMENT_SUCCESS, "projectB", "category", "content", true, false);
-let spanel2 = `<div class="col s4"><div class="card-panel green lighten-2">` + scard2.createHtmlFor() + `</div></div>`;
+let spanel2 = new panel(cardType.EXPERIMENT_SUCCESS).toHtml([scard2, scard2]);
 
 let scard3 = new card(1,cardType.PRACTICE_SUCCESS, "projectC", "category", "content", false, true);
-let spanel3 = `<div class="col s4"><div class="card-panel green lighten-2">` + scard3.createHtmlFor() + `</div></div>`;
+let spanel3 = new panel(cardType.PRACTICE_SUCCESS).toHtml([scard3, scard2]);
 
 let spanel = spanel1 + spanel2 + spanel3;
 
-
 let fcard1 = new card(1,cardType.MISTAKES_FAILURE, "projectC", "category", "content", false, true);
-let fpanel1 = `<div class="col s4"><div class="card-panel red lighten-2">` + fcard1.createHtmlFor() + `</div></div>`;
+let fpanel1 = new panel(cardType.MISTAKES_FAILURE).toHtml([fcard1]);
 
 let fcard2 = new card(1,cardType.EXPERIMENT_FAILURE, "projectB", "category", "content", true, false);
-let fpanel2 = `<div class="col s4"><div class="card-panel green lighten-2">` + fcard2.createHtmlFor() + `</div></div>`;
+let fpanel2 = new panel(cardType.EXPERIMENT_FAILURE).toHtml([fcard2]);
 
 let fcard3 = new card(1,cardType.PRACTICE_FAILURE, "projectA", "category", "content", false, false);
-let fpanel3 = `<div class="col s4"><div class="card-panel grey lighten-2">` + fcard3.createHtmlFor() + `</div></div>`;
+let fpanel3 = new panel(cardType.PRACTICE_FAILURE).toHtml([fcard3]);
 
 let fpanel = fpanel1 + fpanel2 + fpanel3;
 
